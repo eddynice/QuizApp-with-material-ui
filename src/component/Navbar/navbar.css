@@ -1,0 +1,34 @@
+.navbar{
+    height: 100%;
+}
+
+.nav-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    min-width: 130px;
+    height: 100%;
+}
+
+.logo img{
+    width: 10%;
+    margin-left: -18px;
+}
+
+.list-wrapper img{
+    opacity: 1;
+    z-index: 4;
+    width: 40px;
+    right: 15px;
+    padding: 8px;
+    position: absolute;
+    border-radius: 10px;
+    background-color: blueviolet;
+    transition: all 0.5s ease-in-out;
+}
