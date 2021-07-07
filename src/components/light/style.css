@@ -1,0 +1,65 @@
+#darkMode {
+    background: var(--toggleIcon) no-repeat center;
+    background-size: 20px 20px;
+    width: 30px;
+    height: 30px;
+    filter: grayscale(0%);
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: #151b5459;
+    transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
+    margin-top: 0.4rem;
+    position: relative;
+    top: 0;
+}
+
+@media (max-width: 991px) {
+    #darkMode {
+        position: fixed;
+        right: 5.1rem;
+        top: 12.5px;
+    }
+}
+
+#darkMode:hover {
+    filter: none;
+    border: none;
+    background-color: #151b548f;
+    cursor: pointer;
+}
+
+#darkMode:active {
+    border: none;
+}
+
+#darkMode.clicked {
+    filter: none !important;
+    background-color: #f2f27a59;
+    transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
+    border: none;
+}
+
+#darkMode.clicked:hover {
+    filter: none;
+    border: none;
+    background-color: #f2f27a93;
+    cursor: pointer;
+}
+
+:root {
+    --bg-color: #fff;
+    --text-color: #000;
+}
+
+[data-theme="dark"] {
+    --bg-color: #3f3f3f;
+    --text-color: "fff"
+}
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}

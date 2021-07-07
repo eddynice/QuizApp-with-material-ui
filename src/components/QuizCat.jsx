@@ -1,4 +1,3 @@
-//import classes from '*.module.css'
 import { Button, Container, FormControl, 
     Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from '@material-ui/core'
 import axios from 'axios'
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme)=>{
 export default function QuizCat() {
    const [catergories , setCatergories ]=useState([])
    const [catergory, setCatergory] = useState({id:"", name:""})
-   const[ quizNumber, setQuiznumber] = useState(null);
+   const [quizNumber, setQuiznumber] = useState(null);
    const [difficulty, setDifficulty] = useState({id:"", name:""});
    const [quizData , setQuizData] = useState([])
    const classes = useStyles();
@@ -25,20 +24,25 @@ export default function QuizCat() {
 
 const fetchQuizData =async()=>{
     try{
-        const url =("http://");
+        const url =("http://facebook.com");
 
         const  {data} = await axios.get(url)
 
 
         const formatDatacat = data.results.map((cat)=>{
+            //2
+             
             const incorrectAnswerIndexes = cat.incorrect_answers.length;
+            //3
             const randomIndex = Math.round(
                 Math.rondom() * (incorrectAnswerIndexes - 0) + 0
             )
             cat.incorrect_answers.splice(randomIndex, 0, cat.correct_answer);
+           //1
             return {
                 ...cat, 
                 answers:cat.incorrect_answers
+              //b4 answers:cat.incorrect_answers  .cancat(cat.correct_answers),
             }
         });
         setQuizData(formatDatacat);
@@ -54,7 +58,7 @@ console.log("fetch quiz error" , error);
 
 
 const FetchCategories = async  ()=>{
-    const {data} = await axios.get (`http:///`);
+    const {data} = await axios.get (`https://facebook.com`);
     setCatergories(data.trivia_categories)
 }
 
@@ -65,32 +69,33 @@ const FetchCategories = async  ()=>{
 
 
 
-    const fetchQuit = async ()=>{
-        const {data} = await axios.get()
+    //const fetchQuit = async ()=>{
+      //  const {data} = await axios.get()
 
-        const formatData  = data.results.map((catergory)=>{
-            const incorrectAnsIndex = catergory.incorrect_answers.length;
-            const randonIndex =Math.random() * (incorrectAnsIndex-0) + 0;
-            catergory.incorrect_answers.splice(
-                randonIndex,
-                0,
-                catergory.correct_answers
-            );
-            return {
-                ...catergory,
-                answers:catergory.incorrect_answers
-            }
-        })
+        //const formatData  = data.results.map((catergory)=>{
+          //  const incorrectAnsIndex = catergory.incorrect_answers.length;
+            //const randonIndex =Math.random() * (incorrectAnsIndex-0) + 0;
+            //catergory.incorrect_answers.splice(
+              //  randonIndex,
+                //0,
+                //catergory.correct_answers
+            //);
+            //return {
+              //  ...catergory,
+                //answers:catergory.incorrect_answers
+            //}
+        //})
 
        // console.log({responae})
       // setCatergory(data.responae)
-       setCatergory(formatData)
-    }
+       //setCatergory(formatData)
+    //}
 
 
     useEffect(() => {
         FetchCategories();
        window.scrollTo(0, "20px");
+       
 
     }, []);
     console.log({catergories})
@@ -147,8 +152,9 @@ if (!catergories.length){
 
 return (
         <Container>
-            <Paper className={classes.Paper}>
-                {currentQuizStep === "start" ?(
+            <Paper className={classes.paper}>
+                {currentQuizStep === "start" ? (
+                    
                     <>
                 <Typography variant="h1" className={classes.mainTitle}>
                     Get Questions
@@ -241,6 +247,7 @@ return (
 
 
             </Paper>
+            <h1>jdjdj</h1>
         </Container>
         
     )
